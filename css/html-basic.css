@@ -1,0 +1,21 @@
+h1 {
+  color: brown;
+}
+
+p {
+  font-size: 30px;
+}
+
+ol,
+ul {
+  border: 1px solid;
+}
+
+dl,
+dd {
+  border: 1px red solid;
+}
+
+marquee {
+  color: crimson;
+}
