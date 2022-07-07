@@ -2,6 +2,14 @@ h1 {
   color: brown;
 }
 
+h2 {
+  font-size: larger;
+}
+
+h3 {
+  font-size: x-large;
+}
+
 p {
   font-size: 30px;
 }
