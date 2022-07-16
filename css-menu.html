@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    * {
+      border: 1px solid;
+      margin: 0;
+    }
+
+    div {
+      position: relative
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      display: none;
+      white-space: nowrap;
+    }
+
+    div>ul {
+      position: absolute;
+      top: 100%;
+      left: -2px;
+    }
+
+    div:hover>ul {
+      display: block;
+      xcolor: red;
+      display: inline-block;
+    }
+
+    div>ul li:hover {
+      background-color: yellow;
+    }
+
+    .apper {
+      position: relative
+    }
+
+    .apper:hover>ul {
+      display: block;
+    }
+
+    .apper>ul {
+      position: absolute;
+      left: 100%;
+      top: -1px;
+    }
+
+    .layout {
+      position: relative
+    }
+
+    .layout:hover>ul {
+      display: block;
+    }
+
+    .layout>ul {
+      position: absolute;
+      left: 100%;
+      top: -1px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div>
+    查看
+    <ul>
+      <li>命令面板</li>
+      <li>打开视图</li>
+      <li class="apper">外观
+        <ul>
+          <li>全屏</li>
+          <li>禅模式</li>
+          <li>居中布局</li>
+        </ul>
+      </li>
+      <li class="layout">布局
+        <ul>
+          <li>向上拆分</li>
+          <li>向下拆分</li>
+          <li>向左拆分</li>
+          <li>向右拆分</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>
