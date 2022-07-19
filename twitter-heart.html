@@ -7,17 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+    h1 {
+      margin: auto;
+    }
+
     div {
-      margin: auto auto;
+      xmargin: auto auto;
       background-image: url(img/heart.png);
       height: 100px;
       width: 100px;
       background-position: 0px 0px;
-      transition: background-position 1s steps(28);
+      xtransition: background-position 1s steps(28);
       border: 1px solid;
     }
 
-    div:hover {
+    div:active {
+      transition: background-position 1s steps(28);
       background-position: -2800px 0px;
     }
 
@@ -25,6 +30,7 @@
 </head>
 
 <body>
+  <h1>长按三联！</h1>
   <div>
   </div>
 </body>
