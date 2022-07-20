@@ -1,0 +1,68 @@
+x* {
+  background-color: rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 0 1px red;
+}
+
+main {
+  width: 640px;
+  height: 360px;
+  margin: 30px auto;
+  position: relative;
+
+  input {
+    display: none;
+
+    &:nth-child(1):checked~.labelbox label:nth-child(1),
+    &:nth-child(2):checked~.labelbox label:nth-child(2),
+    &:nth-child(3):checked~.labelbox label:nth-child(3),
+    &:nth-child(4):checked~.labelbox label:nth-child(4),
+    &:nth-child(5):checked~.labelbox label:nth-child(5) {
+      background-color: orange;
+    }
+
+    &:nth-child(1):checked~.imgbox img:nth-child(1),
+    &:nth-child(2):checked~.imgbox img:nth-child(2),
+    &:nth-child(3):checked~.imgbox img:nth-child(3),
+    &:nth-child(4):checked~.imgbox img:nth-child(4),
+    &:nth-child(5):checked~.imgbox img:nth-child(5) {
+      transition: all 0.5s ease-in;
+      opacity: 1;
+    }
+  }
+
+  .imgbox {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    img {
+      position: absolute;
+      opacity: 0;
+    }
+  }
+
+  .labelbox {
+    position: absolute;
+    bottom: 0px;
+    left: 10px;
+    z-index: 100;
+    font-size: 0px;
+
+    label {
+      width: 20px;
+      height: 20px;
+      border: 1px solid gray;
+      border-radius: 10px;
+      background-color: transparent;
+      display: inline-block;
+      margin: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: orange;
+        transition: all 1s;
+      }
+
+    }
+  }
+}
