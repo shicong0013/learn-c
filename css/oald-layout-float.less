@@ -1,0 +1,110 @@
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+
+  >div {
+    border: 1px solid black;
+    xoverflow: hidden;
+  }
+}
+
+
+
+.oald {
+  float: left;
+  width: 200px;
+  height: 100%;
+  background-color: pink;
+  overflow: hidden;
+
+  #aa {
+    width: 100%;
+    height: 50px;
+
+    p {
+      float: right;
+      font-size: 25px;
+      margin: 10px;
+    }
+  }
+
+  #a {
+    width: 100%;
+    height: calc(100% - 50px);
+    overflow: auto;
+
+    a {
+      display: block;
+      text-decoration: none;
+      margin-left: 40px;
+    }
+  }
+}
+
+.fant {
+  float: left;
+  width: calc(100% - 600px);
+  background-color: rgb(255, 248, 220);
+  height: 100%;
+
+  #fant1 {
+    float: left;
+    font-size: 25px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid black;
+
+    p {
+      margin: 10px 20px;
+    }
+  }
+
+  #fant2 {
+    float: left;
+    width: 100%;
+    height: calc(100% - 50px);
+    overflow: auto;
+
+    p {
+      margin: 20px 40px;
+      font-size: 30px;
+    }
+
+    ol {
+      width: 70%;
+      margin: 0 auto;
+    }
+  }
+}
+
+.hist {
+  float: right;
+  width: 200px;
+  height: 100%;
+  background-color: pink;
+
+  p {
+    float: right;
+    font-size: 25px;
+    margin: 15px;
+  }
+}
+
+.voca {
+  float: right;
+  width: 200px;
+  height: 100%;
+  background-color: pink;
+
+  p {
+    float: right;
+    font-size: 25px;
+    margin: 15px;
+  }
+}

@@ -1,6 +1,6 @@
 * {
-  xbackground-color: rgba(0, 0, 0, 0.08);
-  xbox-shadow: inset 0 0 1px red;
+  background-color: rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 0 1px red;
   margin: 0;
   box-sizing: border-box;
 }
@@ -9,26 +9,139 @@ body {
   width: 100%;
 
   main {
-    margin: 50px auto;
+    width: 100%;
+    margin: 20px auto;
+  }
+}
 
-    table {
-      margin: auto;
-      background-color: blue;
-      border-spacing: 5px;
+.follow {
+  width: 160px;
+  margin: 50px auto;
+  border-bottom: 3px solid red;
 
-      tr {
-        td {
-          width: 50px;
-          height: 50px;
-          text-align: center;
-          background-color: white;
-          color: black;
-        }
+  p {
+    height: 60px;
+    display: table-cell;
+    vertical-align: bottom;
 
-        td:hover {
-          box-shadow: 0 0 0 5px red;
-        }
-      }
+    &:hover {
+      cursor: pointer;
+      font-size: 40px;
+      background-color: green;
+      color: green;
+      transition: font-size 3s,
+        background-color 0s 2.8s,
+        color 0s 2.8s;
+    }
+  }
+}
+
+table {
+  margin: auto;
+  background-color: blue;
+  border-spacing: 5px;
+
+  tr {
+    td {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      background-color: white;
+      color: black;
+    }
+
+    td:hover {
+      box-shadow: 0 0 0 5px red;
+    }
+  }
+}
+
+#grid {
+  display: grid;
+  position: relative;
+  width: 170px;
+  margin: 50px auto;
+  grid-template-columns: 50px 50px 50px;
+  grid-gap: 5px;
+  background-color: blue;
+  padding: 5px;
+
+  &::before {
+    content: "grid";
+    position: absolute;
+    left: 70px;
+    top: -30px;
+  }
+
+  div {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    text-align: center;
+    line-height: 50px;
+
+    &:hover {
+      box-shadow: 0 0 0 5px red;
+    }
+  }
+}
+
+#flex {
+  width: 170px;
+  height: 170px;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: space-evenly;
+  background-color: blue;
+  position: relative;
+
+  &::before {
+    content: "flex";
+    position: absolute;
+    left: 70px;
+    top: -30px;
+  }
+
+  div {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    text-align: center;
+    line-height: 50px;
+
+    &:hover {
+      box-shadow: 0 0 0 5px red;
+    }
+  }
+}
+
+#float {
+  width: 170px;
+  height: 170px;
+  margin: 50px auto;
+  background-color: blue;
+  position: relative;
+
+  &::before {
+    content: "float";
+    position: absolute;
+    left: 70px;
+    top: -30px;
+  }
+
+  div {
+    width: 50px;
+    height: 50px;
+    float: left;
+    text-align: center;
+    line-height: 50px;
+    background-color: white;
+    margin: 5px 0px 0px 5px;
+
+    &:hover {
+      box-shadow: 0 0 0 5px red;
     }
   }
 }
