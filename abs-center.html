@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    * {
+      background-color: rgba(0, 0, 0, 0.08);
+      box-shadow: inset 0 0 1px red;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    p {
+      margin: 0 auto;
+      margin-bottom: -30px;
+      width: 200px;
+    }
+
+    section {
+      width: 150px;
+      height: 150px;
+      margin: 30px auto;
+    }
+
+    #center1 {
+      display: table;
+    }
+
+    #center1 div {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    #center2 {
+      text-align: center;
+    }
+
+    #center2 div {
+      display: inline;
+      line-height: 150px;
+    }
+
+    #center3 {
+      position: relative;
+    }
+
+    #center3 div {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      left: 50%;
+      top: 50%;
+      margin-left: -25px;
+      margin-top: -25px;
+    }
+
+    #center4 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #center5 {
+      position: relative;
+    }
+
+    #center5 div {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+  </style>
+</head>
+
+<body>
+  <p>父元素设置display为table，子元素设置text-align与vertical-align</p>
+  <section id="center1">
+    <div>表格</div>
+  </section>
+  <p>父元素设置text-align水平居中，文字设置行高为父元素高度垂直居中</p>
+  <section id="center2">
+    <div>行内</div>
+  </section>
+  <p>div需设置宽高，然后用绝对定位以div左上角为中间在父元素中居中，在用负外边距把中心点设置在div中心</p>
+  <section id="center3">
+    <div>定位</div>
+  </section>
+  <p>使用justify-content与align-items设置子元素在主轴与纵轴上的位置</p>
+  <section id="center4">
+    <div>flex</div>
+  </section>
+  <p>与定位方式一致，不过使用transform属性，可以不设置元素宽高</p>
+  <section id="center5">
+    <div>定位+偏移</div>
+  </section>
+</body>
+
+</html>
