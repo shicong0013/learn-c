@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  <!-- 右侧悬浮栏 -->
   <nav class="tool-bar">
     <a href="#">
       <div class="icon">
@@ -28,7 +29,6 @@
         <img class="hover" src="img/tool-bar-2-hover.png" alt="">
       </div>
       <span class="text">个人中心</span>
-      <div class="xhover-content"></div>
     </a>
     <a href="#">
       <div class="icon">
@@ -36,7 +36,6 @@
         <img class="hover" src="img/tool-bar-3-hover.png" alt="">
       </div>
       <span class="text">售后服务</span>
-      <div class="xhover-content"></div>
     </a>
     <a href="#">
       <div class="icon">
@@ -44,7 +43,6 @@
         <img class="hover" src="img/tool-bar-4-hover.png" alt="">
       </div>
       <span class="text">人工客服</span>
-      <div class="xhover-content"></div>
     </a>
     <a href="#">
       <div class="icon">
@@ -52,7 +50,6 @@
         <img class="hover" src="img/tool-bar-5-hover.png" alt="">
       </div>
       <span class="text">购物车</span>
-      <div class="xhover-content"></div>
     </a>
     <a href="">
       <div class="icon">
@@ -60,60 +57,63 @@
         <img class="hover" src="img/totop_hover.png" alt="">
       </div>
       <span class="text">回顶部</span>
-      <div class="xhover-content"></div>
     </a>
   </nav>
   <header>
+    <!-- 顶部黑导航栏 -->
     <div class="topbar">
-      <div id="topbar-nav">
-        <a href="#">小米官网</a>
-        <span></span>
-        <a href="#">小米商城</a>
-        <span></span>
-        <a href="#">MIUI</a>
-        <span></span>
-        <a href="#">loT</a>
-        <span></span>
-        <a href="#">云服务</a>
-        <span></span>
-        <a href="#">天星数科</a>
-        <span></span>
-        <a href="#">有品</a>
-        <span></span>
-        <a href="#">小爱开放平台</a>
-        <span></span>
-        <a href="#">企业团购</a>
-        <span></span>
-        <a href="#">资质证照</a>
-        <span></span>
-        <a href="#">协议规则</a>
-        <span></span>
-        <a href="#">下载app</a>
-        <span></span>
-        <a href="#">Select Location</a>
-      </div>
-      <div id="topbar-cart">
-        <div id="cart">
-          <a href="#">
-            <i class="iconfont"></i>
-            购物车
-            <span>(0)</span>
-          </a>
+      <div class="topbar_content">
+        <div id="topbar-nav">
+          <a href="#">小米官网</a>
+          <span></span>
+          <a href="#">小米商城</a>
+          <span></span>
+          <a href="#">MIUI</a>
+          <span></span>
+          <a href="#">loT</a>
+          <span></span>
+          <a href="#">云服务</a>
+          <span></span>
+          <a href="#">天星数科</a>
+          <span></span>
+          <a href="#">有品</a>
+          <span></span>
+          <a href="#">小爱开放平台</a>
+          <span></span>
+          <a href="#">企业团购</a>
+          <span></span>
+          <a href="#">资质证照</a>
+          <span></span>
+          <a href="#">协议规则</a>
+          <span></span>
+          <a href="#">下载app</a>
+          <span></span>
+          <a href="#">Select Location</a>
         </div>
-        <div id="loading">
-          <span>
-            购物车中还没有商品，赶紧选购吧！
-          </span>
+        <div id="topbar-cart">
+          <div id="cart">
+            <a href="#">
+              <em class="iconfont"></em>
+              购物车
+              <span>(0)</span>
+            </a>
+          </div>
+          <div id="loading">
+            <span>
+              购物车中还没有商品，赶紧选购吧！
+            </span>
+          </div>
         </div>
-      </div>
-      <div id="topbar-info">
-        <a href="#">登录</a>
-        <span></span>
-        <a href="#">注册</a>
-        <span></span>
-        <a href="#">消息通知</a>
+        <div id="topbar-info">
+          <a href="#">登录</a>
+          <span></span>
+          <a href="#">注册</a>
+          <span></span>
+          <a href="#">消息通知</a>
+        </div>
       </div>
     </div>
+    <!-- 顶部白色商品栏 -->
     <div class="header">
       <div class="container">
         <div class="header-logo">
@@ -122,18 +122,303 @@
           </a>
         </div>
         <div class="header-nav">
-          <ul>
-            <li></li>
-            <li>Xiaomi手机</li>
-            <li>Redmi手机</li>
-            <li>电视</li>
-            <li>笔记本</li>
-            <li>平板</li>
-            <li>家电</li>
-            <li>路由器</li>
-            <li>服务中心</li>
-            <li>社区</li>
-          </ul>
+          <div class="nav_items">
+            <ul>
+              <li class="nav_item">
+                <a href="">
+                  <span>Xiaomi手机</span>
+                  <div class="nav_list_hidden">
+                    <div class="nav_list_border">
+                      <ul class="nav_list_product">
+                        <li>
+                          <img src="img/nav_xiaomi_12s_ultra.png" alt="">
+                          <p>Xiaomi 12S Ultra</p>
+                          <p class="price">5999元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_xiaomi_12s_ultra.png" alt="">
+                          <p>Xiaomi 12S Ultra</p>
+                          <p class="price">5999元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_xiaomi_12s_ultra.png" alt="">
+                          <p>Xiaomi 12S Ultra</p>
+                          <p class="price">5999元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_xiaomi_12s_ultra.png" alt="">
+                          <p>Xiaomi 12S Ultra</p>
+                          <p class="price">5999元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_xiaomi_12s_ultra.png" alt="">
+                          <p>Xiaomi 12S Ultra</p>
+                          <p class="price">5999元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_xiaomi_12s_ultra.png" alt="">
+                          <p>Xiaomi 12S Ultra</p>
+                          <p class="price">5999元起</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav_item">
+                <a href="">
+                  <span>Redmi手机</span>
+                  <div class="nav_list_hidden">
+                    <div class="nav_list_border">
+                      <ul class="nav_list_product">
+                        <li>
+                          <img src="img/nav-redmi_note.png" alt="">
+                          <p>Redmi Note 11T Pro+</p>
+                          <p class="price">1999元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav-redmi_note.png" alt="">
+                          <p>Redmi Note 11T Pro+</p>
+                          <p class="price">1999元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav-redmi_note.png" alt="">
+                          <p>Redmi Note 11T Pro+</p>
+                          <p class="price">1999元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav-redmi_note.png" alt="">
+                          <p>Redmi Note 11T Pro+</p>
+                          <p class="price">1999元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav-redmi_note.png" alt="">
+                          <p>Redmi Note 11T Pro+</p>
+                          <p class="price">1999元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav-redmi_note.png" alt="">
+                          <p>Redmi Note 11T Pro+</p>
+                          <p class="price">1999元起</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav_item">
+                <a href="">
+                  <span>电视</span>
+                  <div class="nav_list_hidden">
+                    <div class="nav_list_border">
+                      <ul class="nav_list_product">
+                        <li>
+                          <img src="img/nav_television.png" alt="">
+                          <p>Redmi智能电视X55 2022</p>
+                          <p class="price">2399元</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_television.png" alt="">
+                          <p>Redmi智能电视X55 2022</p>
+                          <p class="price">2399元</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_television.png" alt="">
+                          <p>Redmi智能电视X55 2022</p>
+                          <p class="price">2399元</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_television.png" alt="">
+                          <p>Redmi智能电视X55 2022</p>
+                          <p class="price">2399元</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_television.png" alt="">
+                          <p>Redmi智能电视X55 2022</p>
+                          <p class="price">2399元</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_television.png" alt="">
+                          <p>Redmi智能电视X55 2022</p>
+                          <p class="price">2399元</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav_item">
+                <a href="">
+                  <span>笔记本</span>
+                  <div class="nav_list_hidden">
+                    <div class="nav_list_border">
+                      <ul class="nav_list_product">
+                        <li>
+                          <img src="img/nav_redmi_g.png" alt="">
+                          <p>Redmi G 游戏本 2022</p>
+                          <p class="price">7499元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_redmi_g.png" alt="">
+                          <p>Redmi G 游戏本 2022</p>
+                          <p class="price">7499元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_redmi_g.png" alt="">
+                          <p>Redmi G 游戏本 2022</p>
+                          <p class="price">7499元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_redmi_g.png" alt="">
+                          <p>Redmi G 游戏本 2022</p>
+                          <p class="price">7499元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_redmi_g.png" alt="">
+                          <p>Redmi G 游戏本 2022</p>
+                          <p class="price">7499元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_redmi_g.png" alt="">
+                          <p>Redmi G 游戏本 2022</p>
+                          <p class="price">7499元起</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav_item">
+                <a href="">
+                  <span>平板</span>
+                  <div class="nav_list_hidden">
+                    <div class="nav_list_border">
+                      <ul class="nav_list_product">
+                        <li>
+                          <img src="img/nav_pad.png" alt="">
+                          <p>小米平板5</p>
+                          <p class="price">1849元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_pad.png" alt="">
+                          <p>小米平板5</p>
+                          <p class="price">1849元起</p>
+                        </li>
+                        <li>
+                          <img src="img/nav_pad.png" alt="">
+                          <p>小米平板5</p>
+                          <p class="price">1849元起</p>
+                        </li>
+                        <!-- <li>
+                          <img src="" alt="">
+                          <p>小米平板5</p>
+                          <p>1849元起</p>
+                        </li>
+                        <li>
+                          <img src="" alt="">
+                          <p>小米平板5</p>
+                          <p>1849元起</p>
+                        </li>
+                        <li>
+                          <img src="" alt="">
+                          <p>小米平板5</p>
+                          <p>1849元起</p>
+                        </li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav_item">
+                <a href="">
+                  <span>家电</span>
+                  <div class="nav_list_hidden">
+                    <div class="nav_list_border">
+                      <ul class="nav_list_product">
+                        <li>
+                          <img src="img/nav-conditioner.png" alt="">
+                          <p>巨省电 | 米家空调 新一级 1.5匹 睡眠版</p>
+                          <p class="price">2199元</p>
+                        </li>
+                        <li>
+                          <img src="img/nav-conditioner.png" alt="">
+                          <p>巨省电 | 米家空调 新一级 1.5匹 睡眠版</p>
+                          <p class="price">2199元</p>
+                        </li>
+                        <li>
+                          <img src="img/nav-conditioner.png" alt="">
+                          <p>巨省电 | 米家空调 新一级 1.5匹 睡眠版</p>
+                          <p class="price">2199元</p>
+                        </li>
+                        <!-- <li>
+                          <img src="" alt="">
+                          <span></span>
+                          <span></span>
+                        </li>
+                        <li>
+                          <img src="" alt="">
+                          <span></span>
+                          <span></span>
+                        </li>
+                        <li>
+                          <img src="" alt="">
+                          <span></span>
+                          <span></span>
+                        </li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav_item">
+                <a href="">
+                  <span>路由器</span>
+                  <div class="nav_list_hidden">
+                    <div class="nav_list_border">
+                      <ul class="nav_list_product">
+                        <li>
+                          <img src="img/nav-wifi.png" alt="">
+                          <p>小米路由器AX9000</p>
+                          <p class="price">1299元</p>
+                        </li>
+                        <li>
+                          <img src="img/nav-wifi.png" alt="">
+                          <p>小米路由器AX9000</p>
+                          <p class="price">1299元</p>
+                        </li>
+                        <li>
+                          <img src="img/nav-wifi.png" alt="">
+                          <p>小米路由器AX9000</p>
+                          <p class="price">1299元</p>
+                        </li>
+                        <li>
+                          <img src="img/nav-wifi.png" alt="">
+                          <p>小米路由器AX9000</p>
+                          <p class="price">1299元</p>
+                        </li>
+                        <li>
+                          <img src="img/nav-wifi.png" alt="">
+                          <p>小米路由器AX9000</p>
+                          <p class="price">1299元</p>
+                        </li>
+                        <li>
+                          <img src="img/nav-wifi.png" alt="">
+                          <p>小米路由器AX9000</p>
+                          <p class="price">1299元</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="nav_items2">
+            <ul>
+              <li class="nav_item">服务中心</li>
+              <li class="nav_item">社区</li>
+            </ul>
+          </div>
         </div>
         <div class="header-search">
           <form action="#">
@@ -145,6 +430,1267 @@
     </div>
   </header>
   <main>
+    <!-- 第一屏 -->
+    <div class="first_screen">
+      <!-- 左侧商品分类栏 -->
+      <div class="category">
+        <ul>
+          <li>
+            <a href="">
+              手机
+              <em></em>
+            </a>
+            <div>
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/xiaomi_12s.png" alt="">
+                    <span>Xiaomi 12S</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              电视
+              <em></em>
+            </a>
+            <div>
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmi_x65 .png" alt="">
+                    <span>Redmi X65 2022款</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              笔记本 平板
+              <em></em>
+            </a>
+            <div>
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibook.png" alt="">
+                    <span>RedmiBook Pro15 2022</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              出行 穿戴
+              <em></em>
+            </a>
+            <div>
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/witch7.png" alt="">
+                    <span>小米手环7 Pro</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              耳机 音箱
+              <em></em>
+            </a>
+            <div>
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/redmibuds4.png" alt="">
+                    <span>Redmi Buds 4 Pro</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              家电
+              <em></em>
+            </a>
+            <div>
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/washing.png" alt="">
+                    <span>滚筒洗衣机</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              智能 路由器
+              <em></em>
+            </a>
+            <div>
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="img/cyberdog.png" alt="">
+                    <span>CyberDog</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/cyberdog.png" alt="">
+                    <span>CyberDog</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/cyberdog.png" alt="">
+                    <span>CyberDog</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/cyberdog.png" alt="">
+                    <span>CyberDog</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/cyberdog.png" alt="">
+                    <span>CyberDog</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/cyberdog.png" alt="">
+                    <span>CyberDog</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/cyberdog.png" alt="">
+                    <span>CyberDog</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/cyberdog.png" alt="">
+                    <span>CyberDog</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/cyberdog.png" alt="">
+                    <span>CyberDog</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/cyberdog.png" alt="">
+                    <span>CyberDog</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/cyberdog.png" alt="">
+                    <span>CyberDog</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/cyberdog.png" alt="">
+                    <span>CyberDog</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/cyberdog.png" alt="">
+                    <span>CyberDog</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              电源配件
+              <em></em>
+            </a>
+            <div>
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="img/battery.png" alt="">
+                    <span>移动电源</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/battery.png" alt="">
+                    <span>移动电源</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/battery.png" alt="">
+                    <span>移动电源</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/battery.png" alt="">
+                    <span>移动电源</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/battery.png" alt="">
+                    <span>移动电源</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/battery.png" alt="">
+                    <span>移动电源</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/battery.png" alt="">
+                    <span>移动电源</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/battery.png" alt="">
+                    <span>移动电源</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/battery.png" alt="">
+                    <span>移动电源</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/battery.png" alt="">
+                    <span>移动电源</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/battery.png" alt="">
+                    <span>移动电源</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              健康 儿童
+              <em></em>
+            </a>
+            <div>
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/lego.png" alt="">
+                    <span>益智积木</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="">
+              生活 箱包
+              <em></em>
+            </a>
+            <div>
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/bag.png" alt="">
+                    <span>小背包</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- 轮播图 -->
+      <div class="solider">
+        <input type="radio" name="slider" id="slider1" checked>
+        <input type="radio" name="slider" id="slider2">
+        <input type="radio" name="slider" id="slider3">
+        <input type="radio" name="slider" id="slider4">
+        <input type="radio" name="slider" id="slider5">
+        <div class="solider_imgs">
+          <img src="img/slider_1.jpeg" alt="">
+          <img src="img/slider_2.jpeg" alt="">
+          <img src="img/slider_3.jpeg" alt="">
+          <img src="img/slider_4.jpeg" alt="">
+          <img src="img/slider_5.jpeg" alt="">
+        </div>
+        <div class="solider_labs">
+          <label for="slider1"></label>
+          <label for="slider2"></label>
+          <label for="slider3"></label>
+          <label for="slider4"></label>
+          <label for="slider5"></label>
+        </div>
+      </div>
+      <div class="first_screen_sub">
+        <div class="channel_list">
+          <ul>
+            <li>
+              <img src="img/channel1.png" alt="">
+              <p>保障服务</p>
+            </li>
+            <li>
+              <img src="img/channel2.png" alt="">
+              <p>企业团购</p>
+            </li>
+            <li>
+              <img src="img/channel3.png" alt="">
+              <p>F码通道</p>
+            </li>
+            <li>
+              <img src="img/channel4.png" alt="">
+              <p>米粉卡</p>
+            </li>
+            <li>
+              <img src="img/channel5.png" alt="">
+              <p>以旧换新</p>
+            </li>
+            <li>
+              <img src="img/channel6.png" alt="">
+              <p>话费充值</p>
+            </li>
+          </ul>
+        </div>
+        <div class="promo_list">
+
+        </div>
+      </div>
+    </div>
   </main>
   <footer></footer>
 </body>
