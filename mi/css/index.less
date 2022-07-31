@@ -20,7 +20,7 @@ body {
   --header-bg: #333;
   --header-color: #b0b0b0;
   --header-span: rgb(66, 66, 66);
-  --header-border: rgb(224, 224, 224);
+  --header-border: #e0e0e0;
   --icon-color1: #616161;
   --mi-orangered: rgb(255, 106, 0);
   --tool-bar: #757575;
@@ -60,6 +60,25 @@ ul {
   bottom: 40px;
   z-index: 1000;
 
+  //小于1460时位置贴着右侧
+  @media (max-width: 1460px) {
+    left: 50%;
+    margin-left: calc(1226px / 2);
+    right: auto;
+    // right: 0;
+    // left: auto;
+  }
+
+  @media (max-width: 1288px) {
+    left: auto;
+    right: 0;
+    margin-left: 0;
+  }
+
+  @media (max-width: 1242px) {
+    bottom: 23px
+  }
+
   a {
     text-decoration: none;
     display: block;
@@ -69,6 +88,13 @@ ul {
     transition: all .3s;
     border: 1px solid var(--header-border);
     border-top: 0px;
+    background-color: white;
+
+    @media (max-width: 1460px) {
+      width: 22.6px;
+      height: 41.6px;
+      padding-top: 10px;
+    }
 
     &:first-child {
       border-top: 1px solid var(--header-border);
@@ -76,8 +102,7 @@ ul {
       //hover时显示下载图片
       &:hover {
         .hover-content {
-          transition: all .3s;
-          opacity: 1;
+          display: block;
         }
       }
     }
@@ -121,6 +146,12 @@ ul {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -70%);
+
+        //屏幕尺寸小于1460px时显示小图片
+        @media (max-width: 1460px) {
+          width: 20px;
+          height: 20px;
+        }
       }
     }
 
@@ -134,6 +165,11 @@ ul {
       transform: translate(-50%, 60%);
       white-space: nowrap;
       font-size: 1.5rem;
+
+      //图片尺寸小于1460时不显示文字
+      @media (max-width: 1460px) {
+        display: none;
+      }
     }
 
     //手机app悬浮弹窗
@@ -148,7 +184,7 @@ ul {
       transform: translate3d(-110%, 0, 0);
       box-sizing: content-box;
       border: 1px solid var(--header-border);
-      opacity: 0;
+      display: none;
 
       //悬浮窗的箭头
       &::before {
@@ -163,6 +199,7 @@ ul {
 
       }
 
+      //下载二维码
       img {
         width: 100px;
         height: 100px;
@@ -177,7 +214,6 @@ ul {
         margin: 14px auto 0;
       }
     }
-
   }
 }
 
@@ -835,8 +871,6 @@ header {
   }
 }
 
-
-
 //第二屏内容
 .second_screen {
   // * {
@@ -847,7 +881,6 @@ header {
   // background-color: rgba(0, 0, 0, 0.08);
   // box-shadow: inset 0 0 1px red;
   background-color: var(--main-bg);
-
   width: 100%;
 
   //推广栏
@@ -1105,9 +1138,92 @@ header {
                   }
                 }
               }
+
+              //视频
+              .more_video {
+                position: absolute;
+                top: 58px;
+                left: 0;
+                width: 1226px;
+                height: 285px;
+                margin: 0 auto 26px;
+                display: flex;
+
+
+                li {
+                  a {
+                    width: 296px;
+                    height: 285px;
+                    background-color: white;
+                    display: block;
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+
+                    img {
+                      width: 296px;
+                      height: 180px;
+                      margin-bottom: 28px;
+
+                      &:hover {
+                        ~span {
+                          border-color: var(--mi-orangered);
+                          background-color: var(--mi-orangered);
+                        }
+                      }
+
+                    }
+
+                    span {
+                      width: 32px;
+                      height: 20px;
+                      position: absolute;
+                      border: 2px solid white;
+                      border-radius: 12px;
+                      background-color: rgba(0, 0, 0, .6);
+                      transition: all .2s;
+                      left: 20px;
+                      bottom: 115px;
+
+                      &:hover {
+                        border-color: var(--mi-orangered);
+                        background-color: var(--mi-orangered);
+                      }
+
+                      &::after {
+                        content: "\E601";
+                        font-size: 3rem;
+                        color: white;
+                        position: absolute;
+                        font-family: mifont;
+                        top: -20px;
+                      }
+                    }
+
+                    p {
+                      text-align: center;
+                      font-size: 1.4rem;
+                      color: black;
+                    }
+                  }
+
+                  &:nth-child(n + 2) {
+                    margin-left: 14px;
+                  }
+
+                  &:hover {
+                    box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+                    -webkit-transform: translate3d(0, -2px, 0);
+                    transform: translate3d(0, -2px, 0);
+                  }
+                }
+              }
             }
 
-
+            .examine {
+              color: black !important;
+              transition: all .4s;
+            }
           }
 
           //当细分类的标题被hover时所有的标题变为黑色
@@ -1170,5 +1286,66 @@ header {
         }
       }
     }
+  }
+
+  #video_box {
+    height: 369px;
+    margin-bottom: 0;
+  }
+}
+
+footer {
+  width: 100%;
+  background-color: white;
+
+  //服务栏
+  .footer_service {
+    width: 1226px;
+    margin: 0 auto;
+    padding: 27px 0;
+    border-bottom: 1px solid var(--header-border);
+
+    ul {
+      &::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+
+      li {
+        width: 20%;
+        height: 25px;
+        float: left;
+        text-align: center;
+
+        &:nth-child(n + 2) {
+          border-left: 1px solid var(--header-border);
+        }
+
+        a {
+          font-size: 16px;
+          color: var(--icon-color1);
+          transition: color .2s;
+
+          &:hover {
+            color: var(--mi-orangered);
+          }
+
+          em {
+            font-family: mifont;
+            font-style: normal;
+            font-size: 24px;
+            vertical-align: -4px;
+
+          }
+        }
+      }
+    }
+  }
+
+  //链接栏
+  .footer_links {
+    width: 1226px;
+    padding: 40px 0;
   }
 }
