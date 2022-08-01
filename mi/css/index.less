@@ -19,10 +19,10 @@ body {
   font-size: 10px;
   --header-bg: #333;
   --header-color: #b0b0b0;
-  --header-span: rgb(66, 66, 66);
+  --header-span: #424242;
   --header-border: #e0e0e0;
   --icon-color1: #616161;
-  --mi-orangered: rgb(255, 106, 0);
+  --mi-orangered: #ff6700;
   --tool-bar: #757575;
   --box-shadow: 1px 1px 10px #2222;
   --channel-bg: #5f5750;
@@ -1295,57 +1295,190 @@ header {
 }
 
 footer {
-  width: 100%;
-  background-color: white;
+  .footer_site {
+    width: 100%;
+    background-color: white;
 
-  //服务栏
-  .footer_service {
-    width: 1226px;
-    margin: 0 auto;
-    padding: 27px 0;
-    border-bottom: 1px solid var(--header-border);
+    //服务栏
+    .footer_service {
+      width: 1226px;
+      margin: 0 auto;
+      padding: 27px 0;
+      border-bottom: 1px solid var(--header-border);
 
-    ul {
-      &::after {
-        content: "";
-        clear: both;
-        display: table;
-      }
-
-      li {
-        width: 20%;
-        height: 25px;
-        float: left;
-        text-align: center;
-
-        &:nth-child(n + 2) {
-          border-left: 1px solid var(--header-border);
+      ul {
+        &::after {
+          content: "";
+          clear: both;
+          display: table;
         }
 
-        a {
-          font-size: 16px;
-          color: var(--icon-color1);
-          transition: color .2s;
+        li {
+          width: 20%;
+          height: 25px;
+          float: left;
+          text-align: center;
+
+          &:nth-child(n + 2) {
+            border-left: 1px solid var(--header-border);
+          }
+
+          a {
+            font-size: 16px;
+            color: var(--icon-color1);
+            transition: color .2s;
+
+            &:hover {
+              color: var(--mi-orangered);
+            }
+
+            em {
+              font-family: mifont;
+              font-style: normal;
+              font-size: 24px;
+              vertical-align: -4px;
+
+            }
+          }
+        }
+      }
+    }
+
+    //链接栏
+    .footer_links {
+      width: 1226px;
+      padding: 40px 0;
+      margin: auto;
+
+      &::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+
+      &:first-child {
+        xdisplay: block;
+        xclear: both;
+        xmargin-bottom: 30px;
+      }
+
+      //自定义列表
+      dl {
+        width: 160px;
+        float: left;
+
+        dt {
+          font-size: 1.4rem;
+          line-height: 1.25;
+          margin-bottom: 25px;
+          color: var(--header-span);
+
+        }
+
+        dd {
+          font-size: 1.2rem;
+          margin-top: 12px;
+          color: var(--tool-bar);
+          cursor: pointer;
 
           &:hover {
             color: var(--mi-orangered);
           }
+        }
+      }
+
+      //客服热线
+      .footer_call {
+        width: 251px;
+        float: left;
+        border-left: 1px solid var(--header-border);
+
+        p {
+          margin-bottom: 5px;
+          font-size: 12px;
+          color: var(--icon-color1);
+          text-align: center;
+        }
+
+        .phone {
+          font-size: 22px;
+          color: var(--mi-orangered);
+          xline-height: 1;
+        }
+
+        a {
+          display: block;
+          width: 118px;
+          height: 28px;
+          margin: auto;
+          line-height: 28px;
+          font-size: 12px;
+          color: var(--mi-orangered);
+          border: 1px solid var(--mi-orangered);
+          text-align: center;
+          transition: all .4s;
+
+          &:hover {
+            color: white;
+            background-color: var(--mi-orangered);
+          }
 
           em {
-            font-family: mifont;
+            font-family: "mifont";
             font-style: normal;
-            font-size: 24px;
-            vertical-align: -4px;
-
           }
         }
       }
     }
   }
 
-  //链接栏
-  .footer_links {
-    width: 1226px;
-    padding: 40px 0;
+  .footer_info {
+    width: 100%;
+    background-color: var(--main-bg);
+
+    >div {
+      width: 1226px;
+      margin: auto;
+      padding: 30px 0;
+
+      >img {
+        display: block;
+        width: 56px;
+        height: 56px;
+        margin-right: 20px;
+        float: left;
+      }
+
+      >div {
+        margin-left: 77px;
+
+        p {
+          color: var(--header-color);
+
+          a {
+            font-size: 12px;
+            color: var(--header-color);
+            line-height: 18px;
+
+            &:hover {
+              color: var(--mi-orangered);
+            }
+          }
+        }
+
+        .sites {
+          a {
+            color: var(--tool-bar);
+          }
+        }
+
+        div {
+          img {
+            width: auto;
+            height: 28px;
+          }
+        }
+      }
+    }
   }
 }
