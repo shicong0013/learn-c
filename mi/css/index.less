@@ -61,25 +61,27 @@ ul {
   bottom: 40px;
   z-index: 1000;
 
-  //小于1460时位置贴着右侧
+  //当屏幕尺寸小于1460时位置变为贴着内容的右侧
   @media (max-width: 1460px) {
     left: 50%;
     margin-left: calc(1226px / 2);
     right: auto;
-    // right: 0;
-    // left: auto;
   }
 
+  //当屏幕尺寸小于1288时位置变为继续贴纸浏览器右侧边框
   @media (max-width: 1288px) {
     left: auto;
     right: 0;
     margin-left: 0;
   }
 
+  //当放大比例为100%，屏幕尺寸小于内容宽度时距离底部更低
+  //可以不写，只是减去了下方滚动条的高度
   @media (max-width: 1242px) {
     bottom: 23px
   }
 
+  //图标包含快
   a {
     text-decoration: none;
     display: block;
@@ -91,12 +93,31 @@ ul {
     border-top: 0px;
     background-color: white;
 
+    //当屏幕尺寸小于1460时所有图标包含块变小
     @media (max-width: 1460px) {
       width: 22.6px;
       height: 41.6px;
       padding-top: 10px;
     }
 
+    //悬浮栏内的文字
+    .text {
+      display: block;
+      color: var(--tool-bar);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, 60%);
+      white-space: nowrap;
+      font-size: 1.5rem;
+
+      //屏幕尺寸小于1460时不显示文字
+      @media (max-width: 1460px) {
+        display: none;
+      }
+    }
+
+    //单独给第一个包含快添加上边框
     &:first-child {
       border-top: 1px solid var(--header-border);
 
@@ -108,6 +129,7 @@ ul {
       }
     }
 
+    //hover时改变文字颜色和显示橘色图片
     &:hover {
       .text {
         color: var(--mi-orangered);
@@ -124,6 +146,7 @@ ul {
       }
     }
 
+    //图片
     .icon {
       position: relative;
       height: 100%;
@@ -156,23 +179,6 @@ ul {
       }
     }
 
-    //悬浮栏内的文字
-    .text {
-      display: block;
-      color: var(--tool-bar);
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, 60%);
-      white-space: nowrap;
-      font-size: 1.5rem;
-
-      //图片尺寸小于1460时不显示文字
-      @media (max-width: 1460px) {
-        display: none;
-      }
-    }
-
     //手机app悬浮弹窗
     .hover-content {
       width: 100px;
@@ -197,7 +203,6 @@ ul {
         border-style: solid;
         border-width: 6px;
         border-color: transparent transparent transparent white;
-
       }
 
       //下载二维码
