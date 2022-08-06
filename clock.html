@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      xbackground-color: rgba(0, 0, 0, 0.08);
+      xbox-shadow: inset 0 0 1px red;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .clock {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 20px auto;
+    }
+
+    .plat {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: white;
+      box-shadow: 5px 5px 20px #cccccc;
+    }
+
+    .nums {
+      position: absolute;
+      left: 50%;
+      top: 50%
+    }
+
+    .nums span {
+      position: absolute;
+      font-size: 1.5em;
+    }
+
+    .second,
+    .minute,
+    .hour {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .second {
+      animation: time 60s steps(60) infinite;
+    }
+
+    .minute {
+      animation: time 3600s steps(60) infinite;
+    }
+
+    .hour {
+      animation: time 43200s steps(12) infinite;
+    }
+
+    /* 表针 */
+    .second span {
+      display: block;
+      width: 4px;
+      height: 150px;
+      background-color: red;
+      position: absolute;
+      border-radius: 50% 50% 0 0/20% 20% 0 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      top: 15px;
+      animation: second 1s infinite;
+      transform-origin: center calc(100% - 15px);
+    }
+
+    .minute span {
+      display: block;
+      width: 6px;
+      height: 130px;
+      background-color: #333333;
+      position: absolute;
+      border-radius: 50% 50% 0 0/20% 20% 0 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      top: 35px;
+      animation: minute 60s infinite;
+      transform-origin: center calc(100% - 35px);
+    }
+
+    .hour span {
+      display: block;
+      width: 8px;
+      height: 110px;
+      background-color: #333333;
+      position: absolute;
+      border-radius: 50% 50% 0 0/20% 20% 0 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      top: 55px;
+      animation: hour 3600s infinite;
+      transform-origin: center calc(100% - 55px);
+    }
+
+    .needle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: black;
+    }
+
+    /* 转圈动画 */
+    @keyframes time {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    /* 表针动画 */
+    @keyframes second {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      5% {
+        transform: rotate(2deg);
+      }
+
+      10% {
+        transform: rotate(0deg);
+      }
+
+      15% {
+        transform: rotate(-1deg);
+      }
+
+      20% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    @keyframes minute {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      0.125% {
+        transform: rotate(3deg);
+      }
+
+      0.25% {
+        transform: rotate(0deg);
+      }
+
+      0.37% {
+        transform: rotate(-1.5deg);
+      }
+
+      0.5% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    @keyframes hour {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      0.003125% {
+        transform: rotate(3deg);
+      }
+
+      0.00625% {
+        transform: rotate(0deg);
+      }
+
+      0.009375% {
+        transform: rotate(-1deg);
+      }
+
+      0.0125% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    /* 表盘数组摆放 */
+    .nums span:nth-child(1) {
+      transform: translate(-50%, -50%) rotate(30deg) translateY(-135px) rotate(-30deg);
+      /*         设置元素起点为元素中心  旋转时间位置的度数 移动到时间的位置  调整数字垂直摆放 */
+    }
+
+    .nums span:nth-child(2) {
+      transform: translate(-50%, -50%) rotate(60deg) translateY(-135px) rotate(-60deg);
+    }
+
+    .nums span:nth-child(3) {
+      transform: translate(-50%, -50%) rotate(90deg) translateY(-135px) rotate(-90deg);
+    }
+
+    .nums span:nth-child(4) {
+      transform: translate(-50%, -50%) rotate(120deg) translateY(-135px) rotate(-120deg);
+    }
+
+    .nums span:nth-child(5) {
+      transform: translate(-50%, -50%) rotate(150deg) translateY(-135px) rotate(-150deg);
+    }
+
+    .nums span:nth-child(6) {
+      transform: translate(-50%, -50%) rotate(180deg) translateY(-135px) rotate(-180deg);
+    }
+
+    .nums span:nth-child(7) {
+      transform: translate(-50%, -50%) rotate(210deg) translateY(-135px) rotate(-210deg);
+    }
+
+    .nums span:nth-child(8) {
+      transform: translate(-50%, -50%) rotate(240deg) translateY(-135px) rotate(-240deg);
+    }
+
+    .nums span:nth-child(9) {
+      transform: translate(-50%, -50%) rotate(270deg) translateY(-135px) rotate(-270deg);
+    }
+
+    .nums span:nth-child(10) {
+      transform: translate(-50%, -50%) rotate(300deg) translateY(-135px) rotate(-300deg);
+    }
+
+    .nums span:nth-child(11) {
+      transform: translate(-50%, -50%) rotate(330deg) translateY(-135px) rotate(-330deg);
+    }
+
+    .nums span:nth-child(12) {
+      transform: translate(-50%, -50%) rotate(360deg) translateY(-135px) rotate(-360deg);
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="clock">
+    <div class="nums">
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+      <span>6</span>
+      <span>7</span>
+      <span>8</span>
+      <span>9</span>
+      <span>10</span>
+      <span>11</span>
+      <span>12</span>
+    </div>
+    <div class="plat"></div>
+    <div class="hour">
+      <span></span>
+    </div>
+    <div class="minute">
+      <span></span>
+    </div>
+    <div class="second">
+      <span></span>
+    </div>
+    <div class="needle"></div>
+  </div>
+</body>
+
+</html>

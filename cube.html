@@ -13,26 +13,314 @@
       box-sizing: border-box;
     }
 
-    div {
+    body {
+      xposition: relative;
+      --span-h: 40px;
+    }
+
+    /* 按钮开始 */
+    body>span {
+      position: absolute;
+      display: inline-block;
+      text-align: center;
+      font-weight: 400;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      color: #fff;
+      margin: .25rem .125rem;
+      border: 1px solid transparent;
+      border-radius: .25rem;
+    }
+
+    body>span:active {
+      background-color: #0b5ed7;
+      border-color: #0a58ca;
+      color: rgb(214, 202, 202);
+    }
+
+    body>span:nth-child(1) {
+      left: 0;
+      top: var(--span-h);
+    }
+
+    body>span:nth-child(2) {
+      left: 0;
+      top: calc(var(--span-h) * 2);
+    }
+
+    body>span:nth-child(3) {
+      left: 0;
+      top: calc(var(--span-h) * 3);
+    }
+
+    body>span:nth-child(4) {
+      left: 0;
+      top: calc(var(--span-h) * 4);
+    }
+
+    body>span:nth-child(5) {
+      left: 0;
+      top: calc(var(--span-h) * 5);
+    }
+
+    body>span:nth-child(6) {
+      left: 0;
+      top: calc(var(--span-h) * 6);
+    }
+
+    body>span:nth-child(7) {
+      left: 0;
+      top: calc(var(--span-h) * 7);
+    }
+
+    body>span:nth-child(8) {
+      left: 0;
+      top: calc(var(--span-h) * 8);
+    }
+
+    /* 手动立方体动画 */
+    @keyframes s-x {
+      from {
+        transform: rotatex(0deg);
+      }
+
+      to {
+        transform: rotatex(360deg);
+      }
+    }
+
+    @keyframes n-x {
+      from {
+        transform: rotateX(0deg);
+      }
+
+      to {
+        transform: rotateX(-360deg);
+      }
+    }
+
+    @keyframes s-y {
+      from {
+        transform: rotateY(0deg);
+      }
+
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+
+    @keyframes n-y {
+      from {
+        transform: rotateY(0deg);
+      }
+
+      to {
+        transform: rotateY(-360deg);
+      }
+    }
+
+    @keyframes s-z {
+      from {
+        transform: rotateZ(0deg);
+      }
+
+      to {
+        transform: rotateZ(360deg);
+      }
+    }
+
+    @keyframes n-z {
+      from {
+        transform: rotateZ(0deg);
+      }
+
+      to {
+        transform: rotateZ(-360deg);
+      }
+    }
+
+    @keyframes alpha-z {
+      from {
+        transform: translateZ(0);
+
+      }
+
+      to {
+        transform: translateZ(1000px);
+      }
+    }
+
+    @keyframes alpha-f {
+      from {
+        transform: translateZ(0);
+      }
+
+      to {
+        transform: translateZ(-1000px);
+      }
+    }
+
+    /* 给每层添加动画 */
+    .a1 {
+      animation-name: s-x;
+    }
+
+    .a1>div {
+      animation-name: n-x;
+    }
+
+    .a1>div>div {
+      animation-name: s-y;
+    }
+
+    .a1>div>div>div {
+      animation-name: n-y;
+    }
+
+    .a1>div>div>div>div {
+      animation-name: s-z;
+    }
+
+    .a1>div>div>div>div>div {
+      animation-name: n-z;
+    }
+
+    .a1>div>div>div>div>div>.alpha>div {
+      animation-name: alpha-z;
+    }
+
+    .a1>div>div>div>div>div>.alpha>div>div {
+      animation-name: alpha-f;
+    }
+
+    /* 给每层添加鼠标点击后动画运行 */
+    body>span:nth-child(1):active~.a1 {
+      animation-play-state: running;
+    }
+
+    body>span:nth-child(2):active~.a1>div {
+      animation-play-state: running;
+    }
+
+    body>span:nth-child(3):active~.a1>div>div {
+      animation-play-state: running;
+    }
+
+    body>span:nth-child(4):active~.a1>div>div>div {
+      animation-play-state: running;
+    }
+
+    body>span:nth-child(5):active~.a1>div>div>div>div {
+      animation-play-state: running;
+    }
+
+    body>span:nth-child(6):active~.a1>div>div>div>div>div {
+      animation-play-state: running;
+    }
+
+    body>span:nth-child(7):active~.a1>div>div>div>div>div>.alpha>div {
+      animation-play-state: running;
+    }
+
+    body>span:nth-child(8):active~.a1>div>div>div>div>div>.alpha>div>div {
+      animation-play-state: running;
+    }
+
+    /* 自动旋转动画 */
+    @keyframes spin-start {
+      from {
+        transform: rotateY(0deg) rotateX(0deg);
+      }
+
+      to {
+        transform: rotateY(360deg) rotateX(360deg);
+      }
+    }
+
+    .a1,
+    .a1 div,
+    .a2 {
       width: 200px;
       height: 200px;
-      margin: 100px auto;
+      margin: 300px auto;
       position: relative;
       transform-style: preserve-3d;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    .a1 {
+      transform: rotateY(30deg) rotateX(30deg);
+    }
+
+    .a1,
+    .a1 div {
+      animation-play-state: paused;
+      animation-iteration-count: infinite;
+    }
+
+    .a2 {
+      box-shadow: 0 0 0 0px rgba(0, 0, 0, .3);
+      animation: spin-start 6s infinite linear;
       transition: 5s;
     }
 
-    span {
+
+    .a1 span,
+    .a2 span {
       width: 100%;
       height: 100%;
       display: block;
       position: absolute;
       top: 0;
       left: 0;
-      xborder: 2px solid blue;
-      backface-visibility: hidden;
+      xbackface-visibility: hidden;
+      transition: 5s;
+      box-shadow: 0 0 0 0px rgba(0, 0, 0, .3);
     }
 
+    /* 最外层起定位作用，使alpha平面永远相对于方块运动 */
+    .alpha {
+      transform: rotateX(45deg) rotateY(35deg);
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    .alpha>div {
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+
+    }
+
+    .alpha>div>div {
+      width: 200%;
+      height: 200%;
+      background-color: rgba(83, 95, 101, 0.664);
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      top: -50%;
+      left: -50%;
+    }
+
+    .a1:hover {
+      xtransform: rotateY(-220deg) rotateX(-200deg);
+    }
+
+    .a2:hover {
+      animation-play-state: paused;
+    }
+
+    .a2:hover span {
+      box-shadow: 0 0 0 100px rgba(0, 0, 0, .3);
+    }
+
+    /* 方块1渐变开始 */
     /* 正面 */
     .a1 span:nth-child(1) {
       transform: rotateY(0deg) translateZ(100px);
@@ -87,6 +375,8 @@
         linear-gradient(-135deg, rgba(255, 255, 0, 0.8), rgba(255, 255, 0, 0) 50%);
     }
 
+    /* 方块1渐变结束 */
+    /* 贴图 */
     .a2 span:nth-child(1) {
       transform: rotateY(0deg) translateZ(100px);
       background: url(http://www.ritsumei.ac.jp/se/re/izumilab/lecture/07bmp/rgbcube_1gb.jpg);
@@ -118,29 +408,48 @@
       background: url(http://www.ritsumei.ac.jp/se/re/izumilab/lecture/07bmp/rgbcube_r0b.jpg)
     }
 
-    div:hover {
-      transform: rotateY(-220deg) rotateX(-200deg);
-    }
-
   </style>
 </head>
 
 <body>
+  <span>X轴顺时针旋转</span>
+  <span>X轴逆时针旋转</span>
+  <span>Y轴顺时针旋转</span>
+  <span>Y轴逆时针旋转</span>
+  <span>Z轴逆时针旋转</span>
+  <span>Z轴逆时针旋转</span>
+  <span>正向移动α平面</span>
+  <span>负向移动α平面</span>
   <div class="a1">
-    <span>A</span>
-    <span>B</span>
-    <span>C</span>
-    <span>D</span>
-    <span>E</span>
-    <span>F</span>
+    <div>
+      <div>
+        <div>
+          <div>
+            <div>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <div class="alpha">
+                <div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="a2">
-    <span>A</span>
-    <span>B</span>
-    <span>C</span>
-    <span>D</span>
-    <span>E</span>
-    <span>F</span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </body>
 
