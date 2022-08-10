@@ -189,6 +189,12 @@ a {
 
 #contact .contact-links a {
   font-size: 2.4rem;
+  transition: all .3s ease-out;
+  text-shadow: 2px 2px 1px black;
+}
+
+#contact .contact-links a:hover {
+  transform: translateY(5px);
 }
 
 #contact .contact-links a i {
