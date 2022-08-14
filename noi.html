@@ -256,13 +256,12 @@
 </script>
 
 <script type="x" id="ch0104/19">
-  debugger
   var a = Number(prompt()),
     b = Number(prompt()),
     s = prompt();
 
   if (b != 0) {
-    if (s == '+' || s == '-' || s == '*' || s == '*') {
+    if (s == '+' || s == '-' || s == '*' || s == '/') {
       if (s == '+') {
         console.log(a + b);
       }
@@ -784,7 +783,7 @@
   }
   console.log(n);
 </script>
-<script id="ch0105/38">
+<script type="x" id="ch0105/38">
   var n = Number(prompt()),
     x = null,
     c = null,
@@ -937,36 +936,196 @@
   }
   console.log(result);
 </script>
-<script id="narcissistic">
-
+<script type="x" id="narcissistic">
+  var n = Number(prompt()),
+    result = 0,
+    num = 0;
+  if (n < 99 || n > 1000) {
+    alert('水仙花数需为3位数，请从新输入');
+    n = Number(prompt());
+  } else {
+    num = n;
+    while (num / 10 > 0) {
+      result += (num % 10) ** 3;
+      num = (num - num % 10) / 10;
+    }
+    console.log(result == n ? 'YES' : 'NO');
+  }
 </script>
-<script id="">
-
+<script type="x" id="narcissistics">
+  var n = null,
+    result = null;
+  for (var i = 100; i < 1000; i++) {
+    n = i;
+    result = 0;
+    while (n / 10 > 0) {
+      result += (n % 10) ** 3;
+      n = (n - n % 10) / 10;
+    }
+    if (result == i) {
+      console.log(i);
+    }
+  }
 </script>
-<script id="">
-
+<script type="x" id="palindrom">
+  var n = prompt(),
+    flag = 0,
+    l = n.length;
+  for (var i = 0; i < Math.floor(l / 2); i++) {
+    if (n[i] != n[l - i - 1]) {
+      flag = 1;
+    }
+  }
+  console.log(flag == 0 ? 'YES' : 'NO');
 </script>
-<script id="">
-
+<script type="x" id="weekday">
+  var year = Number(prompt()),
+    month = Number(prompt()),
+    d = 1,
+    c = (year - (year % 100)) / 100,
+    y = year % 100,
+    w = null;
+  w = (y + Math.floor(y / 4) + Math.floor(c / 4) - 2 * c + Math.floor((26 * (month + 1)) / 10) + d - 1) % 7;
+  console.log(w);
 </script>
-<script id="">
-
+<script type="x" id="complete-number">
+  var num = Number(prompt()),
+    result = 0,
+    ts = num;
+  while (ts % 2 == 0) {
+    ts = ts / 2;
+  }
+  for (var i = 1; i <= ts; i++) {
+    result += i;
+  }
+  console.log(result == num ? 'YES' : 'NO');
 </script>
-<script id="">
+<script type="x" id="complete-numbers">
+  var result = null,
+    count = null,
+    ts = null;
 
+  for (var i = 3; i <= 1000; i++) {
+    ts = i;
+    result = 0;
+    if (i == 6) {
+      console.log(i);
+      continue;
+    }
+    while (ts % 2 == 0) {
+      ts = ts / 2;
+    }
+    for (var j = 1; j <= ts; j++) {
+      result += j;
+    }
+    if (result == i) {
+      ts = 0;
+      count = 1;
+      while (ts < i) {
+        ts += count ** 3;
+        count += 2;
+      }
+      if (ts == i) {
+        console.log(i);
+      } else {
+        continue;
+      }
+    } else {
+      continue;
+    }
+  }
+  // for (var i = 2; i <= 1000; i++) {
+  //   ts = 0;
+  //   count = 1;
+  //   while (ts < i) {
+  //     ts += count ** 3;
+  //     count += 2;
+  //   }
+  //   if (ts == i) {
+  //     console.log(i);
+  //   } else {
+  //     continue;
+  //   }
+  // }
 </script>
-<script id="">
+<script type="x" id="prime">
+  var num = Number(prompt()),
+    flag = 0;
 
+  for (var i = 2; i < num; i++) {
+    flag = 0;
+    if (num % i == 0) {
+      flag++;
+    }
+  }
+  if (num == 1) {
+    console.log('NO');
+  } else if (flag == 0) {
+    console.log('YES');
+  } else {
+    console.log('NO');
+  }
 </script>
-<script id="">
-
+<script type="x" id="primes">
+  var flag = 0;
+  for (var i = 2; i <= 100; i++) {
+    flag = 0;
+    for (var j = 2; j < i; j++) {
+      if (i % j == 0) {
+        flag++;
+      }
+    }
+    if (flag == 0) {
+      console.log(i);
+    } else {
+      continue;
+    }
+  }
 </script>
-<script id="">
-
+<script type="x" id="itob">
+  var num = Number(prompt()),
+    ts = num,
+    result = '';
+  if (num < 0) {
+    ts *= -1;
+    while (ts / 10 > 0) {
+      result = ts % 10 + result;
+      ts = (ts - ts % 10) / 10;
+    }
+    result = '-' + result;
+  } else {
+    while (ts / 10 > 0) {
+      result = ts % 10 + result;
+      ts = (ts - ts % 10) / 10;
+    }
+  }
+  console.log(result);
 </script>
-<script id="">
-
+<script type="x" id="lcf&lcm">
+  var a = Number(prompt()),
+    b = Number(prompt()),
+    c = null,
+    d = a * b;
+  //最大公约数
+  while (a % b != 0) {
+    c = a % b;
+    a = b;
+    b = c;
+  }
+  console.log(b, d / c);
 </script>
-<script id="">
-
+<script type="x" id="sqrt">
+  var a = Number(prompt()),
+    flag = 0,
+    sqrt = Math.ceil(a / 3.5);
+  while (flag != 1) {
+    sqrt = Number((0.5 * (sqrt + a / sqrt)).toFixed(3));
+    if (sqrt * sqrt == a) {
+      flag = 1;
+    }
+    if (Math.abs(a - sqrt * sqrt) < 0.001) {
+      flag = 1;
+    }
+  }
+  console.log(sqrt);
 </script>
