@@ -118,26 +118,70 @@
       dot(i, j, '#789');
     }
   }
+  //圆
+  var r = 50,
+    x = 0,
+    y = r;
   //空心圆50
-  for (var w = 200; w < 300; w += 0.01) {
-    var h = Math.sqrt(50 ** 2 - (w - 250) ** 2);
-    dot(w, 200 + h);
-    dot(w, 200 - h);
-  }
-  //空心圆200
-  for (var w = 50; w < 450; w += 0.005) {
-    var h = Math.sqrt(200 ** 2 - (w - 250) ** 2);
-    dot(w, 200 + h);
-    dot(w, 200 - h);
-  }
-  //实心圆
-  for (var r = 0; r <= 60; r++) {
-    for (var w = 350 - r; w <= 350 + r; w += 0.01) {
-      var h = Math.sqrt(r ** 2 - (w - 350) ** 2);
-      dot(w, 100 + h);
-      dot(w, 100 - h);
+  while (x <= y) {
+    dot(x + 200, y + 200, 'red');
+    dot(x + 200, -y + 200, 'red');
+    dot(-x + 200, y + 200, 'red');
+    dot(-x + 200, -y + 200, 'red');
+    dot(y + 200, x + 200, 'red');
+    dot(-y + 200, x + 200, 'red');
+    dot(y + 200, -x + 200, 'red');
+    dot(-y + 200, -x + 200, 'red');
+
+    x++;
+
+    var d1 = x * x + y * y;
+    var d2 = x * x + (y - 1) * (y - 1);
+    if (Math.abs(d1 - r * r) > Math.abs(d2 - r * r)) {
+      y--;
     }
   }
+  //空心圆200
+  var rr = 100,
+    x = 0,
+    y = rr;
+  while (x <= y) {
+    dot(x + 200, y + 200, 'red');
+    dot(x + 200, -y + 200, 'red');
+    dot(-x + 200, y + 200, 'red');
+    dot(-x + 200, -y + 200, 'red');
+    dot(y + 200, x + 200, 'red');
+    dot(-y + 200, x + 200, 'red');
+    dot(y + 200, -x + 200, 'red');
+    dot(-y + 200, -x + 200, 'red');
+
+    x++;
+
+    var d1 = x * x + y * y;
+    var d2 = x * x + (y - 1) * (y - 1);
+    if (Math.abs(d1 - rr * rr) > Math.abs(d2 - rr * rr)) {
+      y--;
+    }
+  }
+  //实心圆
+
+  var rr = 50,
+    x = 0;
+  for (var x = -rr; x <= rr; x++) {
+    var y = Math.sqrt(rr * rr - x * x);
+    dot(x + 350, y + 330);
+    dot(x + 350, -y + 330);
+    for (var i = -y; i <= y; i++) {
+      dot(x + 350, i + 330);
+      dot(x + 350, -i + 330);
+    }
+  }
+  for (var y = -rr; y <= rr; y++) {
+    var x = Math.sqrt(rr * rr - y * y);
+    dot(x + 350, y + 330);
+    dot(-x + 350, y + 330);
+  }
+
   //sin(x)
   var sin_y = 0;
   for (var x = 0; x < 300; x++) {
