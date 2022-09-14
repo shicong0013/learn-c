@@ -60,7 +60,17 @@ var shicong0013 = {
     }
     return result;
   },
-  drop: function () { },
+  drop: function (array, n = 1) {
+    if (n >= array.length) {
+      return [];
+    }
+    let result = [];
+    for (var i = n - 1; i < array.length; i++) {
+      result.push(array[i])
+    }
+    return result;
+    //return array.slice(n);
+  },
   dropWhile: function () { },
   dropRight: function () { },
   dropRightWhile: function () { },
