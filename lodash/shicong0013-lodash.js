@@ -65,7 +65,7 @@ var shicong0013 = {
       return [];
     }
     let result = [];
-    for (var i = n - 1; i < array.length; i++) {
+    for (var i = n; i < array.length; i++) {
       result.push(array[i])
     }
     return result;
@@ -84,8 +84,16 @@ var shicong0013 = {
   },
   dropWhile: function () { },
   dropRightWhile: function () { },
-  fill: function () { },
-  findIndex: function () { },
+  fill: function (array, value, start = 0, end = array.length) {
+    var arr = array.slice();
+    for (var i = start; i < end; i++) {
+      arr[i] = value;
+    }
+    return arr;
+  },
+  findIndex: function (array, predicate = _.identity, fromIndex = 0) {
+
+  },
   findLastIndex: function () { },
   flatten: function () { },
   flattenDeep: function () { },
