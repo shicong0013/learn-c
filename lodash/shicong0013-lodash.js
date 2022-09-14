@@ -71,8 +71,18 @@ var shicong0013 = {
     return result;
     //return array.slice(n);
   },
+  dropRight: function (array, n = 1) {
+    if (n >= array.length) {
+      return [];
+    }
+    let result = [];
+    for (var i = 0; i < array.length - n; i++) {
+      result.push(array[i])
+    }
+    return result;
+    return n > array.length ? [] : array.slice(0, array.length - n);
+  },
   dropWhile: function () { },
-  dropRight: function () { },
   dropRightWhile: function () { },
   fill: function () { },
   findIndex: function () { },
