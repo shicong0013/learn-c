@@ -44,14 +44,16 @@ var shicong0013 = {
     //当数组的最后一个参数位数组时说明没有传入检查元素的函数
     if (!Array.isArray(values.at(-1))) {
       diff = values.slice(0, -1);
-      let f = values.slice(-1);
+      var f = values.at(-1);
     }
     //展平数组
     diff = diff.flat();
     if (typeof f == 'function') {
-      let temp = diff.every(x => f(x) != f(array[i]));
-      if (temp) {
-        result.push(array[i]);
+      for (var i = 0; i < array.length; i++) {
+        let temp = diff.every(x => f(x) != f(array[i]));
+        if (temp) {
+          result.push(array[i]);
+        }
       }
     } else {
       result = shicong0013.difference(array, diff);
