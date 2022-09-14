@@ -103,7 +103,7 @@ var shicong0013 = {
   indexOf: function () { },
   initial: function () { },
   intersection: function () { },
-  identity: function () {
-
+  identity: function (value) {
+    return value;
   }
 }
