@@ -91,12 +91,38 @@ var shicong0013 = {
     }
     return arr;
   },
-  findIndex: function (array, predicate = _.identity, fromIndex = 0) {
-
+  findIndex: function (array, predicate, fromIndex = 0) {
+    if (typeof predicate == 'function') {
+      for (var i = fromIndex; i < array.length; i++) {
+        if (predicate(array[i])) {
+          return i;
+        }
+      }
+    }
+    return -1;
   },
   findLastIndex: function () { },
-  flatten: function () { },
-  flattenDeep: function () { },
+  flatten: array => {
+    let result = [];
+    for (var i = 0; i < array.length; i++) {
+      if (Array.isArray(array[i])) {
+        for (var j = 0; j < array[i].length; j++) {
+          result.push(array[i][j]);
+        }
+      } else {
+        result.push(array[i]);
+      }
+    }
+    return result;
+  },
+  flattenDeep: function (array) {
+    return array.reduce((result, it) => {
+      if (Array.isArray(it)) {
+        return result.concat(this.flattenDeep(it));
+      }
+      return result.concat(it);
+    }, [])
+  },
   flattenDepth: function () { },
   fromPairs: function () { },
   head: function () { },
