@@ -124,11 +124,70 @@ var shicong0013 = {
     }, [])
   },
   flattenDepth: function () { },
-  fromPairs: function () { },
-  head: function () { },
-  indexOf: function () { },
-  initial: function () { },
-  intersection: function () { },
+  fromPairs: function (array) {
+    var map = {};
+    for (var i = 0; i < array.length; i++) {
+      map[array[i][0]] = array[i][1];
+    }
+    return map;
+  },
+  head: function (Array) {
+    return Array.shift();
+  },
+  indexOf: function (array, value, fromIndex = 0) {
+    var index = fromIndex;
+    if (fromIndex < 0) {
+      index = (array.length + fromIndex) > 0 ? array.length + fromIndex : 0;
+    }
+    for (var i = index; i < array.length; i++) {
+      if (array[i] == value) {
+        return i;
+      }
+    }
+    return -1;
+  },
+  lastIndexOf: function (array, value, fromIndex = array.length - 1) {
+    var i = fromIndex > 0 ? fromIndex : fromIndex + array.length;
+    for (; i >= 0; i--) {
+      if (array[i] == value) {
+        return i;
+      }
+    }
+    return -1;
+  },
+  initial: function (array) {
+    return array.slice(0, array.length - 1);
+  },
+  intersection: function (...array) {
+    return array[0].filter(x => {
+      return this.indexOf(array[1], x) != -1;
+    });
+  },
+  join: function (array, separator = ',') {
+    return array.reduce((result, x) => {
+      return result + x + separator;
+    }, '').slice(0, -1);
+  },
+  last: function (array) {
+    return array.pop();
+  },
+  pull: function (array, ...values) {
+    return array.filter(x => {
+      return !values.some(a => a == x);
+    });
+  },
+  reverse: function (array) {
+    var result = [];
+    array.map(x => result.unshift(x));
+    return result;
+  },
+  sortedIndex: function (array, value) {
+    for (var i = 0; i < array.length; i++) {
+      if (value > array) {
+        return i + 1;
+      }
+    }
+  },
   identity: function (value) {
     return value;
   }
