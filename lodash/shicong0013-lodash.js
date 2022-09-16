@@ -183,10 +183,31 @@ var shicong0013 = {
   },
   sortedIndex: function (array, value) {
     for (var i = 0; i < array.length; i++) {
-      if (value > array) {
-        return i + 1;
+      if (value <= array) {
+        return i;
       }
     }
+  },
+  union: function (...array) {
+    var map = new Set([].concat(...array));
+    //console.log(...array);
+    var res = [];
+    for (var x of map) {
+      res.push(x);
+    }
+    return res;
+  },
+  uniq: function (array) {
+    return this.union(array);
+  },
+  without: function (array, ...values) {
+    var map = new Set(values);
+    return array.reduce((result, x) => {
+      if (!map.has(x)) {
+        result.push(x);
+      }
+      return result;
+    }, [])
   },
   identity: function (value) {
     return value;
