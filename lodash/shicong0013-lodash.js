@@ -209,6 +209,23 @@ var shicong0013 = {
       return result;
     }, [])
   },
+  xor: function (...arrays) {
+    var map = new Map();
+    var arr = [].concat(...arrays);
+    arr.reduce((a, x) => {
+      map[x] ? map[x]++ : map[x] = 1;
+    }, [])
+    // return arr.reduce((result, x) => {
+    //   if (map[x] == 1) {
+    //     result.push(x);
+    //   }
+    //   return result;
+    // }, []);
+    return arr.reduce((result, x) => {
+      map[x] == 1 ? result.push(x) : map[x]++;
+      return result;
+    }, []);
+  },
   identity: function (value) {
     return value;
   }
