@@ -226,6 +226,15 @@ var shicong0013 = {
       return result;
     }, []);
   },
+  zip: function(...arrays){
+    var result = new Array(arrays[0].length).fill(0).map(() => []);
+    for(var i = 0; i < arrays.length; i++){
+      for(var j = 0; j < arrays[0].length; j++){
+        result[j].push(arrays[i][j]);
+      }
+    }
+    return result;
+  },
   identity: function (value) {
     return value;
   }
