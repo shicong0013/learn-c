@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>solar system</title>
+  <style>
+    #sun, #earth, #moon{
+      position: fixed;
+      border-radius:  99999px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #sun{
+      width: 150px;
+      height: 150px;
+      background-color: rgb(251, 130, 0);
+    }
+    #earth{
+      width: 50px;
+      height: 50px;
+      background-color: rgb(21, 193, 250);
+    }
+    #moon{
+      width: 20px;
+      height: 20px;
+      background-color: rgb(237, 247, 149);
+    }
+
+  </style>
+</head>
+<body>
+  <span id="sun">sun</span>
+  <span id="earth">earth</span>
+  <span id="moon">moon</span>
+</body>
+<script>
+  var lastTime = null;
+  var angle = 0;
+  // var sun = document.querySelector('#sun');
+  requestAnimationFrame(function animate(time){
+    // 当有最后一次的运行时间时
+    if(lastTime != null){
+      // 用现在的时间-最后一次运行时间得到角度
+      angle += (time - lastTime) * 0.001;
+    }
+    // 当前的时间等于最后一次的运行时间
+    lastTime = time
+    var sunX = Math.cos(angle / 6) * 100 + window.innerWidth / 2 - 50;
+    var sunY = Math.sin(angle / 6) * 100 + window.innerHeight / 2 - 50;
+    sun.style.left = sunX + 'px';
+    sun.style.top = sunY + 'px';
+    // 为了让地球围着太阳转，需要加上太阳的坐标
+    // 为了看起是地球的中心围着太阳的中心转需要加上太阳的半径并减去自身的半径
+    var earthX = Math.cos(angle / 2) * 200 + sunX + 75 - 25;
+    var earthY = Math.sin(angle / 2) * 200 + sunY + 75 - 25;
+    earth.style.left = earthX + 'px';
+    earth.style.top = earthY + 'px';
+
+    var moonX = Math.cos(angle) * 60 + earthX + 25 - 10;
+    var moonY = Math.sin(angle) * 60 + earthY + 25 - 10;
+    moon.style.left = moonX +'px';
+    moon.style.top = moonY + 'px';
+    requestAnimationFrame(animate)
+  })
+</script>
+</html>

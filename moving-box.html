@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .draggable{
+      width: 120px;
+      height: 120px;
+      position: fixed;
+      /* 禁止选中元素中的内容，不添加的话有时候会选中元素的内容导致无法拖动元素*/
+      user-select: none;
+      /* 与textarea有冲突 */
+      /* 直接写resize就可以元素可以缩放,滚动条隐藏起来就可以*/
+      /* resize: both;
+      overflow: hidden;
+      min-width: 100px;
+      min-height: 100px; */
+    }
+    .draggable .window-title{
+      margin: 0;
+      background-color: white;
+      opacity: 0.6;
+      /* 修改鼠标到标题栏的样式 */
+      cursor: move;
+    }
+    .draggable .resizer{
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background-color: rgb(94, 93, 93);
+      right: 0;
+      bottom: 0;
+      /* 当鼠标在调整按钮位置的样式 */
+      cursor: nwse-resize;
+      /* 调整缩放按钮为三角形，css裁切 */
+      clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+    }
+    /* 当便签内有textarea元素时，宽高自动 */
+    .draggable:has(textarea){
+      width: auto;
+      height: auto;
+    }
+    .draggable textarea {
+      width: 120px;
+      height: 120px;
+      background-color: transparent;
+      display: block;
+      /* 选中时的边框高亮 */
+      /* outline: none; */
+      /* resize控制调整尺寸的方向 */
+      /* resize: both; */
+    }
+  </style>
+  <title>moving-box</title>
+</head>
+<body>
+  <div class="draggable" style="z-index: 0;left: 0; top: 0; background-color: rgb(166, 52, 136)">
+    <h5 class="window-title">Title</h5>
+  </div>
+  <div class="draggable" style="z-index: 0;left: 0; top: 0; background-color: mediumseagreen">
+    <h5 class="window-title">Title</h5>
+    <!-- textarea也有缩放效果，把外层父元素宽高取消，由textarea撑起 -->
+    <textarea></textarea>
+
+  </div>
+  <div class="draggable" style="z-index: 0;left: 0; top: 0; background-color: greenyellow">
+    <h5 class="window-title">Title</h5>
+    <span class="resizer"></span>
+  </div>
+  <div class="draggable" style="z-index: 0;left: 0; top: 0; background-color: magenta">
+    <h5 class="window-title">Title</h5>
+    <span class="resizer"></span>
+  </div>
+
+</body>
+<script>
+  // 鼠标点下的位置
+  var startX = 0;
+  var startY = 0;
+  // 元素的开始位置
+  var startLeft = 0;
+  var startTop = 0;
+
+  var movingEl = null;
+
+  var maxZIndex = 1; //元素的最大index
+
+  var resizingEl; //
+  var startWidth = 0;
+  var startHeight = 0;
+  // 因为都是操作div且操作都是相同的，可以用事件代理，并把事件绑在document上
+  document.addEventListener('mousedown', function(e){
+    // 统一为draggable与其内的所有元素增加zIndex
+    if(e.target.matches('.draggable, .draggable *')){
+      e.target.closest('.draggable').style.zIndex = ++maxZIndex;
+    }
+    // 判断当前触发的目标是否为div
+    if(e.target.matches('.draggable .window-title')){
+
+      // 当鼠标按下去后保存当时的坐标
+      startX = e.clientX;
+      startY = e.clientY;
+      // 保存当前被点击标题的且类为draggable的祖先元素，方便后面移动位置
+      movingEl = e.target.closest('.draggable');
+
+      startLeft = parseInt(movingEl.style.left);
+      startTop = parseInt(movingEl.style.top);
+
+      // 当元素被点击时把保存的最高元素的zindex增加后给被点击的元素，这样被点击的元素就是最高的
+      //movingEl.style.zIndex = ++maxZIndex;
+
+      // 为了当鼠标移动即使超出浏览器范围也能触发，所以绑在window上
+      window.addEventListener('mousemove', onMouseMove)
+    }
+    // 当
+    if(e.target.matches('.draggable .resizer')){
+      startX = e.clientX;
+      startY = e.clientY;
+      // 当目标需要满足祖先元素为draggable
+      resizingEl = e.target.closest('.draggable')
+      startWidth = resizingEl.offsetWidth;
+      startHeight = resizingEl.offsetHeight;
+
+      // 当调整元素尺寸时也应该置顶元素
+      //resizingEl.style.zIndex = ++maxZIndex;
+      // 当缩放便签时鼠标离开调整区域鼠标要是会变为默认样式，所以给全局修改鼠标样式
+      document.documentElement.style.cursor = 'nwse-resize'
+      // 添加拖动鼠标时元素放大的事件
+      window.addEventListener('mousemove', onMouseMoveResize)
+    }
+  })
+
+  // 这个函数还需要解绑所以在外面定义
+  function onMouseMove(e){
+
+    // 监听不到鼠标被按下时移除事件
+    if(e.buttons == 0 || e.which == 0){
+      window.removeEventListener('mousemove', onMouseMove)
+    } else {
+
+      // 元素需要移动的距离， 移动的位置 - 被按下时的位置
+      // 让元素的移动都是根据鼠标被按下去的初始位置而移动，而不是鼠标上一次的位置
+      var moveX = e.clientX - startX;
+      var moveY = e.clientY - startY;
+
+      // 元素开始的位置加上鼠标移动的距离为元素新的位置
+      var newLeft = parseInt(startLeft) + moveX;
+      var newTop = parseInt(startTop) + moveY;
+
+      // 限制元素不超过出窗口范围，当元素在窗口中的left属性要小于0时就为左侧要超出窗口
+      // 当条件改为小于一定尺寸时将变为磁吸效果
+      if(newLeft < 20){
+        newLeft = 0;//小于一定尺寸时就贴着窗口左侧
+      }
+      if(newTop < 20){
+        newTop = 0;
+      }
+      if(newLeft > innerWidth - movingEl.offsetWidth - 20){ // 用当前视窗的尺寸-元素自身的完整尺寸
+        newLeft = innerWidth - movingEl.offsetWidth
+      }
+      if(newTop > innerHeight - movingEl.offsetHeight - 20){
+        newTop = innerHeight - movingEl.offsetHeight;
+      }
+
+      // 把尺寸赋值给移动元素
+      movingEl.style.left = newLeft + 'px';
+      movingEl.style.top = newTop + 'px';
+    }
+  }
+
+    // 调整元素大小
+  function onMouseMoveResize(e){
+    if(e.buttons == 0 || e.which == 0){
+      window.removeEventListener('mousemove', onMouseMoveResize);
+      document.documentElement.style.cursor = 'auto';
+    } else {
+      // 根据鼠标移动的位置调整元素的大小
+      var moveX = e.clientX - startX;
+      var moveY = e.clientY - startY;
+
+      // 原始尺寸加上鼠标移动尺寸为新的尺寸
+      var newWidth = startWidth + moveX;
+      var newHeight = startHeight + moveY;
+
+      // 设置最小尺寸
+      if(newWidth < 70){
+        newWidth = 70;
+      }
+      if(newHeight < 70){
+        newHeight = 70;
+      }
+      resizingEl.style.width = newWidth + 'px';
+      resizingEl.style.height = newHeight + 'px';
+    }
+  }
+</script>
+</html>
