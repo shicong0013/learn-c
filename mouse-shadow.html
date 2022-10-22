@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse-trail</title>
+  <style>
+    .block{
+      border: 1px solid black;
+      width: 10px;
+      height: 10px;
+      /* 固定定位脱离文档流 */
+      position: fixed;
+    }
+    .shadow{
+      width: 8px;
+      height: 8px;
+      position: fixed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+  </div>
+  <div class="mouseShadow"></div>
+  <p>tip:左键增加，右键减少,滚轮中间点击切换鼠标特效</p>
+</body>
+<script>
+  let containerEl = document.querySelector('.container');
+  // getElementsBy*返回的时动态集合会实时更新
+  let blocksEl = document.getElementsByClassName('block');
+  // 初始位置时隐藏
+  let lastPos = {x : -999, y : -999};
+  // 角度
+  let angle;
+  // 半径,根据旋转块的数量增加半径
+  let r = 30 + blocksEl.length * 10;
+
+  let lastTime = 0;
+  let flag = 0;
+  let shadowEl = document.querySelector('.mouseShadow');
+  let shadows = document.getElementsByClassName('shadow');
+  let color = 0;
+
+  // 当鼠标移入网页时更新鼠标位置
+  window.addEventListener('mousemove', function(e){
+    lastPos = { x : e.clientX, y : e.clientY};
+    if(flag == 1){
+      if(shadows.length < 9){
+        let shadow = document.createElement('div');
+        shadow.classList.add('shadow');
+        shadow.style.left = lastPos.x - 4 + 'px';
+        shadow.style.top = lastPos.y - 4 + 'px';
+        // 因为hsl选取颜色是在360%的环上取色，当color超出360时相当于转了一圈
+        shadow.style.backgroundColor = `hsl(${color++},70%, 50%)`;
+        shadowEl.append(shadow);
+        // setTimeout(() => {
+        //   shadowEl.removeChild(shadowEl.firstChild);
+        // }, 80);
+      }
+    }
+    if(flag == 2){
+      let shadow = document.createElement('span');
+      shadow.textContent = '^';
+      shadow.style.color = `hsl(${Math.random() * 360}, 60%, 60%)`;
+      shadow.style.userSelect = 'none';
+      shadow.style.position = 'fixed'
+      shadow.style.left = lastPos.x + 'px';
+      shadow.style.top = lastPos.y + 'px';
+      shadow.style.opacity = '1';
+      shadow.style.transform = `translate(0,0) scale(0.3)`;
+      shadow.style.transition = '2s';
+
+      shadowEl.append(shadow);
+      // console.log(Date.now())
+      shadow.ontransitionend = () =>{
+        // console.log(Date.now())
+        shadowEl.removeChild(shadowEl.firstChild);
+        // console.log('delete ok')
+      }
+      // shadow.addEventListener('transitionend', () =>{
+      //   console.log(Date.now())
+      //   // shadowEl.removeChild(shadow);
+      //   console.log('delete ok')
+      // })
+      requestAnimationFrame(() => {
+        shadow.style.transform = `translate(${Math.random() * 40 - 20}px, 20px) scale(2)`
+        shadow.style.opacity = '0';
+      })
+    }
+  })
+  // 阻止鼠标右键的默认行为，需要单独监听contextmenu事件
+  window.addEventListener('contextmenu', function(e){
+    e.preventDefault();
+  })
+  // 增加鼠标点击动态添加元素
+  window.addEventListener('mousedown', function(e){
+    if(e.buttons == 1){
+      let block = document.createElement('div');
+      block.classList.add('block');
+      r += 10;
+      // 给创建的新元素left和top属性方便后面动态修改
+      // block.style.left = 0; //似乎不给也可以
+      // block.style.top = 0;
+      containerEl.append(block);
+    }
+    if(e.buttons == 2){
+      // 当blocksEl内还有节点时
+      if(blocksEl.length){
+        containerEl.removeChild(containerEl.lastChild); //移除最后一个子节点
+        r -= 10; //并缩小半径
+      }
+    }
+    if(e.buttons == 4){
+      flag++;
+      if(flag == 3){
+        flag = 0;
+      }
+      console.log(flag)
+    }
+  })
+  requestAnimationFrame(function spin(time){
+    angle = time / blocksEl.length / 100
+    for(let block of blocksEl){
+      // 弧度 * 半径
+      var x = lastPos.x + Math.sin(angle) * r - 5;
+      var y = lastPos.y + Math.cos(angle) * r - 5;
+
+      // 每个方块的角度都根据上一个方块的角度增加
+      angle += 2 * Math.PI / blocksEl.length;
+
+      // 把当前计算出的坐标添加到当前方块上
+      block.style.left = x + 'px';
+      block.style.top = y + 'px';
+    }
+
+    requestAnimationFrame(spin);
+  })
+</script>
+</html>
