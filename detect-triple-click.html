@@ -1,0 +1,60 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p{
+      user-select: none;
+    }
+  </style>
+ </head>
+ <body>
+  <p>请尝试连续三击鼠标</p>
+  <script>
+    let lastTime = 0;
+    let flag = 0;
+    window.addEventListener('mousemove', function(e){
+      lastPos = { x : e.clientX, y : e.clientY};
+    })
+    window.addEventListener('click', function(e){
+      // console.log(e)
+      let nowTime = Date.now();
+      if(nowTime - lastTime < 300){
+        flag++
+        // console.log(flag)
+      }
+      lastTime = nowTime;
+      if(flag === 3){
+        let shadow = document.createElement('span');
+        shadow.textContent = 'tripleclick';
+        shadow.style.color = `hsl(${Math.random() * 360}, 60%, 60%)`;
+        shadow.style.userSelect = 'none';
+        shadow.style.position = 'fixed'
+        shadow.style.left = lastPos.x + 'px';
+        shadow.style.top = lastPos.y + 'px';
+        shadow.style.opacity = '1';
+        shadow.style.transform = `translate(0,0) scale(0.3)`;
+        shadow.style.transition = '2s';
+        document.body.appendChild(shadow);
+
+        shadow.ontransitionend = () =>{
+          document.body.removeChild(document.body.firstChild);
+        }
+        requestAnimationFrame(() => {
+          shadow.style.transform = `translate(${Math.random() * 40 - 20}px, 20px) scale(2)`
+          shadow.style.opacity = '0';
+        })
+        flag = 0;
+      }
+    })
+    window.addEventListener('click', function(e){
+      if(e.detail == 3){
+        console.log(33);
+      }
+    })
+  </script>
+ </body>
+ </html>

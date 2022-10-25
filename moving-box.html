@@ -117,8 +117,8 @@
     z: 2,
     width: '150px',
     height: '120px',
-  }]
-
+  }];
+  console.log(notes)
   // 鼠标点下的位置
   var startX = 0;
   var startY = 0;
@@ -128,26 +128,30 @@
 
   var movingEl = null;
 
-  var maxZIndex = 1; //元素的最大index
+  var maxZIndex = Math.max(...notes.map(it => it.z)); //元素的最大index
 
   var resizingEl; //
   var startWidth = 0;
   var startHeight = 0;
 
-  for(var note of notes){
-    var noteEl = elt(`
-      <div data-id='${note.id}' class="draggable" style="z-index: ${note.z};left: ${note.x}; top: ${note.y}; width: ${note.width}; height: ${note.height}; background-color: ${note.color}">
-        <h5 class="window-title">
-          <span class='add-note'>+</span>
-          <span class='remove-note'>&times;</span>
-        </h5>
-        <textarea>${note.content}</textarea>
-        <span class='resizer'></span>
-      </div>
-    `)
-    // 把生成的便签插入到body中
-    document.body.appendChild(noteEl);
+  init()
+  function init(){
+    for(var note of notes){
+      var noteEl = elt(`
+        <div data-id='${note.id}' class="draggable" style="z-index: ${note.z};left: ${note.x}; top: ${note.y}; width: ${note.width}; height: ${note.height}; background-color: ${note.color}">
+          <h5 class="window-title">
+            <span class='add-note'>+</span>
+            <span class='remove-note'>&times;</span>
+          </h5>
+          <textarea>${note.content}</textarea>
+          <span class='resizer'></span>
+        </div>
+      `)
+      // 把生成的便签插入到body中
+      document.body.appendChild(noteEl);
+    }
   }
+
 
   // 根据字符串生成html
   function elt(htmlString){
@@ -164,6 +168,7 @@
     // 统一为draggable与其内的所有元素增加zIndex
     if(e.target.matches('.draggable, .draggable *')){
       e.target.closest('.draggable').style.zIndex = ++maxZIndex;
+
     }
     // 判断当前触发的目标是否为div
     if(e.target.matches('.draggable .window-title')){
@@ -199,6 +204,7 @@
       // 添加拖动鼠标时元素放大的事件
       window.addEventListener('mousemove', onMouseMoveResize)
     }
+    save();
   })
 
   // 这个函数还需要解绑所以在外面定义
@@ -218,6 +224,7 @@
       note.x = outerMost.style.left;
       note.y = outerMost.style.top;
       note.z = outerMost.style.zIndex
+      save()
     } else {
 
       // 元素需要移动的距离， 移动的位置 - 被按下时的位置
@@ -248,7 +255,7 @@
       movingEl.style.left = newLeft + 'px';
       movingEl.style.top = newTop + 'px';
     }
-    save()
+
   }
 
     // 调整元素大小
@@ -266,6 +273,7 @@
       // 把当前元素的位置保存起来
       note.width = outerMost.style.width;
       note.height = outerMost.style.height;
+      save()
     } else {
       // 根据鼠标移动的位置调整元素的大小
       var moveX = e.clientX - startX;
@@ -285,7 +293,7 @@
       resizingEl.style.width = newWidth + 'px';
       resizingEl.style.height = newHeight + 'px';
     }
-    save()
+
   }
   // 便签添加、删除
   document.addEventListener('click', function(e){
@@ -294,14 +302,14 @@
           id: notes.at(-1).id + 1,
           content: '',
           color: ['#fcfaae', '#cbc0fe', '#a3ed9b', '#ecb2ec', '#ececec', '#c0e1f5'].at(Math.random() * 6 | 0), // |0 向下取整
-          x: Math.random() * (innerWidth - 120),
-          y: Math.random() * (innerHeight - 120),
+          x: Math.random() * (innerWidth - 120) + 'px',
+          y: Math.random() * (innerHeight - 120) + 'px',
           z: ++maxZIndex,
           width: '150px',
           height: '120px',
         };
       var noteEl = elt(`
-        <div data-id='${note.id}' class="draggable" style="z-index: ${note.z};left: ${note.x}px; top: ${note.y}px; width: ${note.width}; height: ${note.height}; background-color: ${note.color}">
+        <div data-id='${note.id}' class="draggable" style="z-index: ${note.z};left: ${note.x}; top: ${note.y}; width: ${note.width}; height: ${note.height}; background-color: ${note.color}">
           <h5 class="window-title">
             <span class='add-note'>+</span>
             <span class='remove-note'>&times;</span>
@@ -312,6 +320,7 @@
       `)
       notes.push(note);
       document.body.appendChild(noteEl);
+      save()
     }
     if(e.target.matches('.remove-note')){
       // 找到当前元素的最外层元素
@@ -324,7 +333,9 @@
         notes.splice(idx, 1);
       }
       outerMost.remove()
+      save()
     }
+
   })
 
   // 保存便签内容
@@ -347,5 +358,19 @@
   function save(){
     localStorage.notes = JSON.stringify(notes);
   }
+
+  // 多页面同时更新数据
+  window.addEventListener('storage', function(e){
+    // 找到所有的标签
+    let drags = document.querySelectorAll('.draggable');
+    // 并移除所有的标签
+    for(let drag of drags){
+      drag.remove();
+    }
+    // 从新取得localStorage中的数据
+    notes = JSON.parse(localStorage.getItem('notes'));
+    // 再执行初始化操作
+    init();
+  })
 </script>
 </html>
