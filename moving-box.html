@@ -23,13 +23,22 @@
       background-color: white;
       opacity: 0.6;
       /* 修改鼠标到标题栏的样式 */
-      cursor: move;
+      /* cursor: move; */
+    }
+    .window-title{
+      display: flex;
+      justify-content: space-between;
+      height: 24px;
+    }
+    .window-title span:hover{
+      color: white;
+      cursor: pointer;
     }
     .draggable .resizer{
       position: absolute;
       width: 6px;
       height: 6px;
-      background-color: rgb(94, 93, 93);
+      background-color: rgb(227, 68, 68);
       right: 0;
       bottom: 0;
       /* 当鼠标在调整按钮位置的样式 */
@@ -43,39 +52,73 @@
       height: auto;
     }
     .draggable textarea {
-      width: 120px;
-      height: 120px;
+      width: 100%;
+      height: calc(100% - 24px);
+      box-sizing: border-box;
       background-color: transparent;
+      border: none;
       display: block;
       /* 选中时的边框高亮 */
-      /* outline: none; */
+      outline: none;
       /* resize控制调整尺寸的方向 */
-      /* resize: both; */
+      resize: none;
     }
   </style>
   <title>moving-box</title>
 </head>
 <body>
-  <div class="draggable" style="z-index: 0;left: 0; top: 0; background-color: rgb(166, 52, 136)">
-    <h5 class="window-title">Title</h5>
-  </div>
-  <div class="draggable" style="z-index: 0;left: 0; top: 0; background-color: mediumseagreen">
-    <h5 class="window-title">Title</h5>
+  <!-- <div class="draggable" style="z-index: 0;left: 0; top: 0; background-color: rgb(166, 52, 136)">
+    <h5 class="window-title">
+      <span>+</span>
+      <span>&times;</span>
+    </h5>
+  </div> -->
+  <!-- <div class="draggable" style="z-index: 0;left: 0; top: 0; background-color: mediumseagreen">
+    <h5 class="window-title">
+      <span>+</span>
+      <span>&times;</span>
+    </h5> -->
     <!-- textarea也有缩放效果，把外层父元素宽高取消，由textarea撑起 -->
-    <textarea></textarea>
-
+    <!-- <textarea></textarea>
   </div>
   <div class="draggable" style="z-index: 0;left: 0; top: 0; background-color: greenyellow">
-    <h5 class="window-title">Title</h5>
+    <h5 class="window-title">
+      <span>+</span>
+      <span>&times;</span>
+    </h5>
     <span class="resizer"></span>
   </div>
   <div class="draggable" style="z-index: 0;left: 0; top: 0; background-color: magenta">
-    <h5 class="window-title">Title</h5>
+    <h5 class="window-title">
+      <span>+</span>
+      <span>&times;</span>
+    </h5>
     <span class="resizer"></span>
-  </div>
+  </div> -->
 
 </body>
 <script>
+  // 取出localStorage中的notes数据，没有则创建一个新的
+  var notes = JSON.parse(localStorage.getItem('notes')) ?? [{
+    id: 1,
+    content: 'test content',
+    color: 'violet',
+    x: '10px',
+    y: '10px',
+    z: 1,
+    width: '150px',
+    height: '120px',
+  },{
+    id: 2,
+    content: 'test content',
+    color: 'violet',
+    x: '30px',
+    y: '20px',
+    z: 2,
+    width: '150px',
+    height: '120px',
+  }]
+
   // 鼠标点下的位置
   var startX = 0;
   var startY = 0;
@@ -90,6 +133,32 @@
   var resizingEl; //
   var startWidth = 0;
   var startHeight = 0;
+
+  for(var note of notes){
+    var noteEl = elt(`
+      <div data-id='${note.id}' class="draggable" style="z-index: ${note.z};left: ${note.x}; top: ${note.y}; width: ${note.width}; height: ${note.height}; background-color: ${note.color}">
+        <h5 class="window-title">
+          <span class='add-note'>+</span>
+          <span class='remove-note'>&times;</span>
+        </h5>
+        <textarea>${note.content}</textarea>
+        <span class='resizer'></span>
+      </div>
+    `)
+    // 把生成的便签插入到body中
+    document.body.appendChild(noteEl);
+  }
+
+  // 根据字符串生成html
+  function elt(htmlString){
+    var div = document.createElement('div');
+    // 把传进的html的字符串赋值成div的innerhtml，会被自动转换成html元素
+    div.innerHTML = htmlString;
+    // 因为生成的html元素时被一个div包裹，所以返回这个div的第一个子元素
+    return div.firstElementChild;
+  }
+
+
   // 因为都是操作div且操作都是相同的，可以用事件代理，并把事件绑在document上
   document.addEventListener('mousedown', function(e){
     // 统一为draggable与其内的所有元素增加zIndex
@@ -137,7 +206,18 @@
 
     // 监听不到鼠标被按下时移除事件
     if(e.buttons == 0 || e.which == 0){
-      window.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('mousemove', onMouseMove);
+
+      // 找到当前元素的最外层元素
+      var outerMost = e.target.closest('div.draggable');
+      // 拿到当前元素的id
+      var id = outerMost.dataset.id;
+      // 通过找到的id再notes中找到这个id的数据
+      var note = notes.find(it => it.id == id);
+      // 把当前元素的位置保存起来
+      note.x = outerMost.style.left;
+      note.y = outerMost.style.top;
+      note.z = outerMost.style.zIndex
     } else {
 
       // 元素需要移动的距离， 移动的位置 - 被按下时的位置
@@ -168,6 +248,7 @@
       movingEl.style.left = newLeft + 'px';
       movingEl.style.top = newTop + 'px';
     }
+    save()
   }
 
     // 调整元素大小
@@ -175,6 +256,16 @@
     if(e.buttons == 0 || e.which == 0){
       window.removeEventListener('mousemove', onMouseMoveResize);
       document.documentElement.style.cursor = 'auto';
+
+      // 找到当前元素的最外层元素
+      var outerMost = e.target.closest('div.draggable');
+      // 拿到当前元素的id
+      var id = outerMost.dataset.id;
+      // 通过找到的id再notes中找到这个id的数据
+      var note = notes.find(it => it.id == id);
+      // 把当前元素的位置保存起来
+      note.width = outerMost.style.width;
+      note.height = outerMost.style.height;
     } else {
       // 根据鼠标移动的位置调整元素的大小
       var moveX = e.clientX - startX;
@@ -194,6 +285,67 @@
       resizingEl.style.width = newWidth + 'px';
       resizingEl.style.height = newHeight + 'px';
     }
+    save()
+  }
+  // 便签添加、删除
+  document.addEventListener('click', function(e){
+    if(e.target.matches('.add-note')){
+      var note = {
+          id: notes.at(-1).id + 1,
+          content: '',
+          color: ['#fcfaae', '#cbc0fe', '#a3ed9b', '#ecb2ec', '#ececec', '#c0e1f5'].at(Math.random() * 6 | 0), // |0 向下取整
+          x: Math.random() * (innerWidth - 120),
+          y: Math.random() * (innerHeight - 120),
+          z: ++maxZIndex,
+          width: '150px',
+          height: '120px',
+        };
+      var noteEl = elt(`
+        <div data-id='${note.id}' class="draggable" style="z-index: ${note.z};left: ${note.x}px; top: ${note.y}px; width: ${note.width}; height: ${note.height}; background-color: ${note.color}">
+          <h5 class="window-title">
+            <span class='add-note'>+</span>
+            <span class='remove-note'>&times;</span>
+          </h5>
+          <textarea></textarea>
+          <span class='resizer'></span>
+        </div>
+      `)
+      notes.push(note);
+      document.body.appendChild(noteEl);
+    }
+    if(e.target.matches('.remove-note')){
+      // 找到当前元素的最外层元素
+      var outerMost = e.target.closest('div.draggable');
+      // 拿到当前元素的id
+      var id = outerMost.dataset.id;
+      // 通过找到的id再notes中找到这个note的索引
+      var idx = notes.findIndex(it => it.id == id)
+      if(idx >= 0){
+        notes.splice(idx, 1);
+      }
+      outerMost.remove()
+    }
+  })
+
+  // 保存便签内容
+  document.addEventListener('input', function(e){
+    // 确认当前元素为textarea
+    if(e.target.matches('textarea')){
+      // 找到当前元素的最外层元素
+      var outerMost = e.target.closest('div.draggable');
+      // 拿到当前元素的id
+      var id = outerMost.dataset.id;
+      // 通过找到的id再notes中找到这个id的数据
+      var note = notes.find(it => it.id == id)
+      // 在把当前输入框内的value存到notes中
+      note.content = e.target.value;
+      save()
+    }
+  })
+
+  // 保存数据到localStorage
+  function save(){
+    localStorage.notes = JSON.stringify(notes);
   }
 </script>
 </html>
